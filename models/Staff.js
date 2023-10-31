@@ -26,4 +26,4 @@ const StaffSchema = new Schema(
   }
 );
 
-export const Staff = models?.Staff || model("Staff", StaffSchema);
+export const StaffModel = models?.Staff || model("Staff", StaffSchema);

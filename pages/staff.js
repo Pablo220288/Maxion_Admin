@@ -3,9 +3,11 @@ import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Tooltip } from "@material-tailwind/react";
+import { mongooseConnect } from "@/lib/mongoose";
+import { StaffModel } from "@/models/Staff";
 
-export default function Staff() {
-  const [allStaff, setAllStaff] = useState([]);
+export default function Staff({ allStaff }) {
+  /*   const [allStaff, setAllStaff] = useState([]);
 
   const getStaff = async () => {
     const res = await axios.get("/api/staff");
@@ -17,7 +19,7 @@ export default function Staff() {
 
   useEffect(() => {
     getStaff();
-  }, []);
+  }, []); */
 
   return (
     <Layout>
@@ -124,4 +126,14 @@ export default function Staff() {
       </table>
     </Layout>
   );
+}
+
+export async function getServerSideProps() {
+  await mongooseConnect();
+  const staff = await StaffModel.find({});
+  return {
+    props: {
+      allStaff: JSON.parse(JSON.stringify(staff)),
+    },
+  };
 }

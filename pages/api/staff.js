@@ -1,5 +1,5 @@
 import { mongooseConnect } from "@/lib/mongoose";
-import { Staff } from "@/models/Staff";
+import { StaffModel } from "@/models/Staff";
 
 export default async function handle(req, res) {
   const { method } = req;
@@ -9,9 +9,9 @@ export default async function handle(req, res) {
 
   if (method === "GET") {
     if (req.query?.id) {
-      res.json(await Staff.findOne({ _id: req.query.id }));
+      res.json(await StaffModel.findOne({ _id: req.query.id }));
     } else {
-      res.json(await Staff.find());
+      res.json(await StaffModel.find());
     }
   }
 
@@ -35,7 +35,7 @@ export default async function handle(req, res) {
       sector,
       hierarchy,
     } = req.body;
-    const StaffDoc = await Staff.create({
+    const StaffDoc = await StaffModel.create({
       file,
       company,
       admission: new Date(admission),
@@ -78,8 +78,7 @@ export default async function handle(req, res) {
       hierarchy,
       _id,
     } = req.body;
-    console.log(civilStatus);
-    await Staff.updateOne(
+    await StaffModel.updateOne(
       { _id },
       {
         file,

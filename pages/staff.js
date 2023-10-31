@@ -7,10 +7,14 @@ import { Tooltip } from "@material-tailwind/react";
 export default function Staff() {
   const [allStaff, setAllStaff] = useState([]);
 
-  useEffect(() => {
-    axios.get("/api/staff").then((response) => {
+  const getStaff = async () => {
+    await axios.get("/api/staff").then((response) => {
       setAllStaff(response.data);
     });
+  };
+
+  useEffect(() => {
+    getStaff();
   }, []);
 
   return (

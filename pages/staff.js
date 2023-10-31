@@ -8,9 +8,11 @@ export default function Staff() {
   const [allStaff, setAllStaff] = useState([]);
 
   const getStaff = async () => {
+    const res = await axios.get("/api/staff");
     await axios.get("/api/staff").then((response) => {
       setAllStaff(response.data);
     });
+    console.log(res.data);
   };
 
   useEffect(() => {

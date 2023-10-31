@@ -11,9 +11,7 @@ export default async function handle(req, res) {
     if (req.query?.id) {
       res.json(await Staff.findOne({ _id: req.query.id }));
     } else {
-      res.json(await Staff.find(), null, {
-        sort: { file: -1 },
-      });
+      res.json(await Staff.find({}));
     }
   }
 

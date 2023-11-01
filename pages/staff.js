@@ -3,23 +3,18 @@ import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Tooltip } from "@material-tailwind/react";
-import { mongooseConnect } from "@/lib/mongoose";
-import { StaffModel } from "@/models/Staff";
 
-export default function Staff({ allStaff }) {
-  /*   const [allStaff, setAllStaff] = useState([]);
+export default function Staff() {
+  const [allStaff, setAllStaff] = useState([]);
 
   const getStaff = async () => {
     const res = await axios.get("/api/staff");
     await axios.get("/api/staff").then((response) => {
       setAllStaff(response.data);
     });
-    console.log(res.data);
+    console.log(res);
   };
 
-  useEffect(() => {
-    getStaff();
-  }, []); */
 
   return (
     <Layout>
@@ -47,6 +42,7 @@ export default function Staff({ allStaff }) {
           </svg>
         </Link>
       </div>
+      <button onClick={getStaff}>Cargar</button>
       <table className="basic mt-4">
         <thead>
           <tr>
@@ -56,7 +52,7 @@ export default function Staff({ allStaff }) {
           </tr>
         </thead>
         <tbody>
-          {allStaff.map((staff, index) => (
+          {allStaff && allStaff.map((staff, index) => (
             <tr key={staff._id}>
               <td>{staff.file}</td>
               <td>
@@ -126,14 +122,4 @@ export default function Staff({ allStaff }) {
       </table>
     </Layout>
   );
-}
-
-export async function getServerSideProps() {
-  await mongooseConnect();
-  const staff = await StaffModel.find({});
-  return {
-    props: {
-      allStaff: JSON.parse(JSON.stringify(staff)),
-    },
-  };
 }

@@ -16,6 +16,10 @@ export default function Staff() {
     console.log(res.data);
   };
 
+  useEffect(() => {
+    getStaff();
+  }, []);
+
   console.log(allStaff);
   return (
     <Layout>
@@ -43,8 +47,7 @@ export default function Staff() {
           </svg>
         </Link>
       </div>
-      <button onClick={getStaff}>Cargar</button>
-      <TableStaff allStaff={allStaff}/>
+      {allStaff && <TableStaff allStaff={allStaff} />}
     </Layout>
   );
 }

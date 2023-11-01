@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 export default function TableStaff({ allStaff }) {
+    console.log(allStaff)
   return (
     <table className="basic mt-4">
       <thead>
@@ -13,7 +14,7 @@ export default function TableStaff({ allStaff }) {
         </tr>
       </thead>
       <tbody>
-        {allStaff &&
+{/*         {allStaff &&
           allStaff.map((staff, index) => (
             <tr key={staff._id}>
               <td>{staff.file}</td>
@@ -79,7 +80,13 @@ export default function TableStaff({ allStaff }) {
                 </div>
               </td>
             </tr>
-          ))}
+          ))} */}
+        {allStaff[0] === undefined ? <div>nada</div> : (
+          <tr>
+            <td>{allStaff[0]._id}</td>
+            <td>{allStaff[0].name}</td>
+          </tr>
+        )}
       </tbody>
     </table>
   );

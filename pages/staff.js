@@ -4,29 +4,33 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Tooltip } from "@material-tailwind/react";
 import TableStaff from "@/components/TableStaff";
+import Spinner from "@/components/Spinner";
 
 export default function Staff() {
   const [allStaff, setAllStaff] = useState([]);
+  const [isStaff, setIsStaff] = useState(false);
 
   const getStaff = async () => {
-    const res = await axios.get("/api/staff");
+    setIsStaff(true);
     await axios.get("/api/staff").then((response) => {
       setAllStaff(response.data);
     });
-    console.log(res.data);
+    setIsStaff(false);
   };
 
   useEffect(() => {
     getStaff();
   }, []);
 
-  console.log(allStaff);
   return (
     <Layout>
       <div className="mt-2 flex justify-between">
-        <h4 className="block font-sans text-2xl leading-snug tracking-normal text-indigo-500 antialiased">
-          Staff
-        </h4>
+        <div className="flex items-center gap-2">
+          <h4 className="block font-sans text-2xl leading-snug tracking-normal text-indigo-500 antialiased">
+            Staff
+          </h4>
+          {isStaff && <Spinner color={"#eeeeee"} />}
+        </div>
         <Link
           className="flex w-fit rounded-md text-white p-2 hover:bg-blue-900 select-none bg-indigo-500 text-center align-middle font-sans shadow-md shadow-indigo-500/20 transition-all hover:shadow-lg hover:shadow-indigo-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           href={"/staff/new"}

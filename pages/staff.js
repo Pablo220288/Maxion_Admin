@@ -67,6 +67,13 @@ export default function Staff() {
             {allStaff.map((staff) => (
               <tr key={staff._id}>
                 <td>{staff.file}</td>
+                <td>
+                  {staff.name[0].toUpperCase() +
+                    staff.name.substring(1) +
+                    " " +
+                    staff.lastName[0].toUpperCase() +
+                    staff.lastName.substring(1)}
+                </td>
               </tr>
             ))}
           </tbody>

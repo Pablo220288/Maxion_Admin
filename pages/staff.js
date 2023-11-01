@@ -12,7 +12,7 @@ export default function Staff() {
   const getStaff = async () => {
     try {
       setIsStaff(true);
-      const response = await axios.get("/api/staff");
+      const response = await axios.get("/api/staff/find");
       setAllStaff(response.data);
     } catch (error) {
       console.error("Error fetching staff data:", error);

@@ -15,7 +15,7 @@ export default function EditStaffPage() {
     if (!id) {
       return;
     }
-    axios.get("/api/staff?id=" + id).then((response) => {
+    axios.get("/api/staff/findbyid/?id=" + id).then((response) => {
       setStaffInfo(response.data);
     });
   }, [id]);

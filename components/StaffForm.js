@@ -79,11 +79,11 @@ export default function StaffForm({
       toast.error("All data is required.");
     } else if (_id) {
       // Update
-      await axios.put("/api/staff", { ...data, _id });
+      await axios.put("/api/staff/update", { ...data, _id });
       setGoToStaff(true);
     } else {
       // Create
-      await axios.post("/api/staff", data);
+      await axios.post("/api/staff/create", data);
       setGoToStaff(true);
     }
   };

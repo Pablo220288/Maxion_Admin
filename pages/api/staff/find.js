@@ -5,6 +5,6 @@ export default async function handle(req, res) {
   await mongooseConnect();
   // await isAdminRequest(req, res)
 
-  const data = await StaffModel.find({});
+  const data = await StaffModel.find({}).exec();
   res.json(data);
 }

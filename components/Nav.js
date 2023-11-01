@@ -65,7 +65,7 @@ export default function Nav({ show }) {
             strokeWidth={1.5}
             stroke="currentColor"
             className={
-              pathname.includes("/products") ? "activeIcon" : "inactiveIcon"
+              pathname.includes("/staff") ? "activeIcon" : "inactiveIcon"
             }
           >
             <path

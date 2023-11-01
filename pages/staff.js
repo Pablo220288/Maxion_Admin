@@ -22,7 +22,7 @@ export default function Staff() {
   };
 
   useEffect(() => {
-    getStaff();
+    if (allStaff.length === 0) getStaff();
   }, []);
 
   return (
@@ -54,7 +54,7 @@ export default function Staff() {
           </svg>
         </Link>
       </div>
-      {allStaff && <TableStaff allStaff={allStaff} />}
+      {allStaff.length > 0 && <TableStaff allStaff={allStaff} />}
     </Layout>
   );
 }

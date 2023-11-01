@@ -54,7 +54,7 @@ export default function Staff() {
           </svg>
         </Link>
       </div>
-      {allStaff.length > 0 && <TableStaff allStaff={allStaff} />}
+      {allStaff.length > 0 && <div>{allStaff[0].name}</div>}
     </Layout>
   );
 }

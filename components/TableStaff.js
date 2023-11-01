@@ -2,8 +2,8 @@ import { Tooltip } from "@material-tailwind/react";
 import Link from "next/link";
 import React from "react";
 
-export default function TableStaff({ allStaff }) {
-  console.log(allStaff);
+export default function TableStaff({ data }) {
+  console.log(data);
 
   return (
     <table className="basic mt-4">
@@ -15,7 +15,7 @@ export default function TableStaff({ allStaff }) {
         </tr>
       </thead>
       <tbody>
-        {allStaff.map((staff) => (
+        {data.map((staff) => (
           <tr key={staff._id}>
             <td>{staff.file}</td>
             <td>

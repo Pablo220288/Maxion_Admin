@@ -54,7 +54,7 @@ export default function Staff() {
           </svg>
         </Link>
       </div>
-      {allStaff.length > 0 && allStaff.map((staff) => <div key={staff._id}>{staff.name}</div>)}
+      {allStaff.length > 0 && <TableStaff data={allStaff} />}
     </Layout>
   );
 }

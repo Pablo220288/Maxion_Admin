@@ -2,7 +2,6 @@ import Layout from "@/components/Layout";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Tooltip } from "@material-tailwind/react";
 import TableStaff from "@/components/TableStaff";
 import Spinner from "@/components/Spinner";
 
@@ -11,11 +10,15 @@ export default function Staff() {
   const [isStaff, setIsStaff] = useState(false);
 
   const getStaff = async () => {
-    setIsStaff(true);
-    await axios.get("/api/staff").then((response) => {
+    try {
+      setIsStaff(true);
+      const response = await axios.get("/api/staff");
       setAllStaff(response.data);
-    });
-    setIsStaff(false);
+    } catch (error) {
+      console.error("Error fetching staff data:", error);
+    } finally {
+      setIsStaff(false);
+    }
   };
 
   useEffect(() => {

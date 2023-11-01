@@ -54,7 +54,24 @@ export default function Staff() {
           </svg>
         </Link>
       </div>
-      {allStaff.length > 0 && <TableStaff data={allStaff} />}
+      {allStaff.length > 0 && (
+        <table className="basic mt-4">
+          <thead>
+            <tr>
+              <td>File</td>
+              <td>Name</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            {allStaff.map((staff) => (
+              <tr key={staff._id}>
+                <td>{staff.file}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </Layout>
   );
 }

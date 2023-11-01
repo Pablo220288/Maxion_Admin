@@ -22,7 +22,7 @@ export default function Staff() {
   };
 
   useEffect(() => {
-    if (allStaff.length === 0) getStaff();
+    getStaff();
   }, []);
 
   return (

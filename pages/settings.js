@@ -5,13 +5,15 @@ import React from "react";
 export default function Settings() {
   return (
     <Layout>
-      <h1>Settings</h1>
+      <div className="flex items-center gap-2 mt-3">
+        <h4 className="block font-sans text-2xl leading-snug tracking-normal text-indigo-500 antialiased">
+          Settings
+        </h4>
+      </div>
       <div className="m-2">
         <Link
           href={"/settings/admin"}
-          className="flex 
-      items-center gap-2 p-2 rounded-lg text-gray-600
-      transition ease-in-out duration-150 hover:bg-highlight hover:text-black"
+          className="flex items-center gap-2 p-2 rounded-lg text-gray-600 transition ease-in-out duration-150 hover:bg-backgroud-body hover:text-black"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

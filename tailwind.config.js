@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 const withMT = require("@material-tailwind/react/utils/withMT");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = withMT({
   content: [
@@ -12,6 +13,9 @@ module.exports = withMT({
     extend: {
       colors: {
         "backgroud-body": "#eae8fb",
+      },
+      fontFamily: {
+        pablo: ['"The Scientist", sans-serif', ...defaultTheme.fontFamily.sans],
       },
     },
   },
